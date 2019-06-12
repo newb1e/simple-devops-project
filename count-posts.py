@@ -3,13 +3,19 @@ from multiprocessing import Value
 import json
 from Counter import counter
 
-# used multiprocessing.Value. This synchronizes access to a 
+# Read Counter value from Json. 
+# This way previouse count will be included.
+counter_from_json = counter.read_counter_from_json(counter.open_counter_json())
+# Used multiprocessing.Value. This synchronizes access to a 
 # shared value across processes, as long as the processes 
 # are spawned after the value is created.
-counter_from_json = counter.read_counter_from_json(counter.open_counter_json())
 counter_value = Value('i', counter_from_json)
 app = Flask(__name__)
 
+# counter_service function will check if the http method
+# is POST/GET. If GET, return number of POST requests.
+# Else, if http method is POST, update number of POST
+# requests at the json file.
 @app.route('/', methods=['GET', 'POST'])
 def counter_service():
     if request.method == "POST":
