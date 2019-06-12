@@ -1,16 +1,23 @@
 from flask import Flask, abort, request
 from multiprocessing import Value
+import json
+from Counter import counter
 
-counter = Value('i', 0)
+# used multiprocessing.Value. This synchronizes access to a 
+# shared value across processes, as long as the processes 
+# are spawned after the value is created.
+counter_from_json = counter.read_counter_from_json(counter.open_counter_json())
+counter_value = Value('i', counter_from_json)
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET', 'POST'])
-def hello():
+def counter_service():
     if request.method == "POST":
-        with counter.get_lock():
-            counter.value += 1
+        with counter_value.get_lock():
+            counter_value.value += 1
+            counter.write_counter_to_json(counter.open_counter_json(),counter_value.value)
     elif request.method == "GET":
-        return "Number of POST's is: "+str(counter.value)
+        return "Number of POST's is: "+str(counter_value.value)
     return "POST request"
+
 app.run(processes=8)
