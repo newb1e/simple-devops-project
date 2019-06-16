@@ -23,7 +23,7 @@ def counter_service():
             counter_value.value += 1
             counter.write_counter_to_json(counter.open_counter_json(),counter_value.value)
     elif request.method == "GET":
-        return "Number of POST's is (test123): "+str(counter_value.value)
+        return "Number of POST's is (test1234): "+str(counter_value.value)
     return "POST request"
 
 app.run(host="0.0.0.0", port="80")
