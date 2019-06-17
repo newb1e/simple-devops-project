@@ -6,5 +6,5 @@ COPY . /app
 WORKDIR /app
 RUN pip install flask
 ENV FLASK_APP=count-posts
-#ENTRYPOINT ["python"]
-#CMD ["count-posts.py"]
+ENTRYPOINT ["python"]
+CMD ["count-posts.py"]

@@ -1,5 +1,5 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
     //{
     //    args '-p 1080:1080'
     //    }
@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo hello'
-                sh 'python count-posts.py'
+                sh 'test.sh'
             }
         }
     }
