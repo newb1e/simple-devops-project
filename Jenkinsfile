@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         dockerfile {
-            args '-p 80:1080 -v ./counter.json:/app/counter.json'
+            args '-p 80:1080 -v counter.json:/app/counter.json'
         } 
     }
     stages {
