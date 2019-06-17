@@ -1,18 +1,9 @@
 pipeline {
-    agent { 
-        dockerfile
-        {
-            args '-p 1080:1080'
-        }
-    }
-    environment {
-        CI = 'true'
-    }
+    agent { dockerfile true }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
                 sh 'python count-posts.py'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
     }
