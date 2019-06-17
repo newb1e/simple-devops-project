@@ -5,7 +5,7 @@ pipeline {
         } 
     }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
                 sh 'python count-posts.py'
             }
