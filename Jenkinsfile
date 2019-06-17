@@ -1,7 +1,6 @@
 pipeline {
     agent {
     dockerfile {
-        label 'test1'
         args '-p 1080:1080'
         }
     }
