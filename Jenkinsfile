@@ -1,10 +1,15 @@
 pipeline {
-  agent any
-  stages {
-      stage('Build') {
-          steps {
-              sh 'echo hello'
-          }
-      }
-  }
+    agent {
+    dockerfile {
+        label 'test1'
+        args '-p 1080:1080'
+        }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+    }
 }

@@ -26,4 +26,4 @@ def counter_service():
         return "Number of POST's is (test1234): "+str(counter_value.value)
     return "POST request"
 
-app.run(host="0.0.0.0", port="80")
+app.run(host="0.0.0.0", port="1080")
