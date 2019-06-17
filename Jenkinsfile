@@ -1,7 +1,11 @@
 pipeline {
-    agent { dockerfile true }
+    agent { 
+        dockerfile {
+            args '-p 1080:1080'
+        } 
+    }
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
                 sh 'python count-posts.py'
             }
