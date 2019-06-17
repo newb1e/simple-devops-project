@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'python count-posts.py'
+                sh 'python count-posts.py &'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
     }
