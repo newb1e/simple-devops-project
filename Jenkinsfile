@@ -1,9 +1,13 @@
 pipeline {
-    agent { dockerfile true }
-        ///{
-    //    args '-p 1080:1080'
-    //    }
-    //}
+    agent { 
+        dockerfile
+        {
+            args '-p 1080:1080'
+        }
+    }
+    environment {
+        CI = 'true'
+    }
     stages {
         stage('Build') {
             steps {
