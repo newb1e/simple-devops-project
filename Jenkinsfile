@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo hello'
+                sh 'python count-posts.py'
             }
         }
     }
