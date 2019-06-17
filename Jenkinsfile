@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         dockerfile {
-            args '-p 1080:1080'
+            args '-p 80:1080'
         } 
     }
     stages {
