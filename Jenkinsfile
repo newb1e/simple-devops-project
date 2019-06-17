@@ -1,6 +1,6 @@
 pipeline {
-    agent any
-    //{
+    agent { dockerfile true }
+        //{
     //    args '-p 1080:1080'
     //    }
     //}
@@ -8,7 +8,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'echo hello'
-                sh './test.sh'
             }
         }
     }
