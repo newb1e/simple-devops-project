@@ -1,6 +1,6 @@
 pipeline {
     agent { dockerfile true }
-        //{
+        ///{
     //    args '-p 1080:1080'
     //    }
     //}
